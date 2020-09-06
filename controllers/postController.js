@@ -102,7 +102,8 @@ const deletePost = (req,res)=>{
   
 posts.findOneAndDelete({ _id: postId }, function (err) {
   if(!err) {
-      res.render('profile',{title:"home"});
+     
+      res.redirect('/profile');
   }
   else{
     console.log(err);
@@ -113,7 +114,7 @@ posts.findOneAndDelete({ _id: postId }, function (err) {
 const updateDetails  =  (req,res)=>{
     const postId = req.params.postid;
          posts.find({_id:postId}).then((data)=>{
-    
+          
     res.render('updatePostDetails',{login:true,data,title:'Update post'})
    }).catch((err)=>{
        console.log(err.message);
@@ -131,7 +132,8 @@ if (err){
 console.log(err) 
 } 
 else{ 
-res.render('profile',{title:"home"}); 
+    
+    res.redirect('/profile'); 
 } 
 }); 
 }

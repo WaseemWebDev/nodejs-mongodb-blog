@@ -27,7 +27,7 @@
       <% if(items.length > 0){ %>
       <% items.forEach((posts)=>{ %>
       <div id="posts-list">
-        <img src="uploads/<%=posts.image%>" style="height: 230px; width: 360px"  alt="image"/>
+        <img src="/uploads/<%=posts.image%>" style="height: 230px; width: 360px"  alt="image"/>
         <br /><br />
         <h2><a href="postdetails/<%= posts._id %>" style="text-decoration:none;"><%= posts.name%></a></h2>
         <br/>
