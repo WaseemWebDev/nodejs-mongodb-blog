@@ -1,0 +1,30 @@
+<html>
+    <%- include('components/header.ejs') %>
+
+<body>
+    <%- include("components/navbar.ejs") %>
+  <center>    <%= typeof msg != 'undefined' ? msg : '' %>
+ <!-- <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img"> -->
+<div id="postform">
+<form action='/createpost' method='post' enctype="multipart/form-data">
+    <label style="color: black;">Title</label>
+<input type="text" name="postname" placeholder="post name" class="postsdetails" />
+<br/><br/>
+<input type="hidden" name="userid" value=<%= userID %> />
+<label style="color: black;">Description</label>
+<textarea cols="55" rows="8" name="description" placeholder="description"></textarea>
+<br/><br/>
+<input name="myImage" type="file" class="postsdetails">
+<br/>
+<input type="submit" value="post"  style="border: 9px;width:120px; background:lightgreen; padding:10px;"/>
+</form>
+</div>
+</center>
+
+<br/><br/><br/><br/><br/>
+<% if(locals.message.success) { %>
+    <span class="alert-success"><%= message.success %></span>
+    <% } %>
+     
+</body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+  <%- include("components/header.ejs")%>
+  <body>
+    <%- include("components/navbar.ejs") %>
+    <div
+      style="
+        background: lightblue;
+        color: darkslategrey;
+        height: 80px;
+        float: right;
+        width: 250px;
+        border-radius: 8px;
+      "
+    >
+      <span>Email:</span> <%= user.email %>
+      <br />
+      <span>username:</span> <%= user.name %>
+    </div>
+    <br />
+    <br />
+    <br/>
+    <br />
+    <br />
+    <br/>
+    
+    <div id="posts">
+      <% if(items.length > 0){ %>
+      <% items.forEach((posts)=>{ %>
+      <div id="posts-list">
+        <img src="uploads/<%=posts.image%>" style="height: 230px; width: 360px"  alt="image"/>
+        <br /><br />
+        <h2><a href="postdetails/<%= posts._id %>" style="text-decoration:none;"><%= posts.name%></a></h2>
+        <br/>
+        <h5><%= posts.description.substring(0, 80);%></h5>
+        <small>PostedBy: <%= posts.userId.name%></small>
+        <br/>
+        <button style=" background:lightgreen; float: right; border: none; border-radius: 10px; padding: 10px;"><a style="text-decoration: none;" href="/updatedetails/<%= posts._id%>">update</a></button>
+      </div>
+      <% }) %>
+      <%  } else{%>
+        <h4>no posts available</h4>
+        <%  } %>
+    </div>
+    <br />
+    <% 
+    let totalPages = Math.ceil(count/perPage);
+    let startLoop =  currentPage;
+    let diff = totalPages - currentPage;
+    if(diff <= 4){
+        startLoop = totalPages - 4;
+    }
+    let endLoop = parseInt(startLoop) + 4;
+    if(startLoop <= 0 ){
+        startLoop = 1;
+    }
+    %>
+    <% if(count > 1 && items.length !== 0){ %>
+    <div class="pagination">
+        <ul>
+            <% if(currentPage > 1) { %>
+            <li><a href="/profile/<%= currentPage - 1%>" class="prev">Prev</a></li>
+            <% } %>
+            <% for(let i = startLoop; i <= endLoop; i++){ let active = i == currentPage ? 'active' : '' %>
+            <li><a href="/profile/<%= i %>" class="<%= active %>"><%= i %></a></li>
+            <% } %>
+            <% if(currentPage < totalPages){ %>
+            <li><a href="/profile/<%= parseInt(currentPage) + 1%>" class="prev">Next</a></li>
+            <% } %>
+        </ul>
+    </div>
+    <% } %>
+
+    
+  </body>
+</html>

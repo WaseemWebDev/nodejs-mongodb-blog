@@ -1,0 +1,18 @@
+<nav class="nav">
+   
+    <ul class="right-nav">
+        
+       <% if(typeof login != 'undefined' && login === true) {%>
+        <ul class="left-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/showpost">Create Post</a></li>
+        </ul>
+        <li><a href="/logout">logout</a></li>
+        <%}else{%>
+         
+            <li><a href="/">Register</a></li>
+            <li><a href="/login">Login</a></li>
+
+        <%}%>
+    </ul>
+</nav>

@@ -1,0 +1,31 @@
+<html>
+    <%- include('components/header.ejs') %>
+
+<body>
+    <%- include("components/navbar.ejs") %>
+  <center>   
+ 
+
+   <%  data.forEach((items,index)=>{ %>
+    <div id="postform">
+    <form action='/updatepost' method='post' >
+    <label style="color: black;">Update Title</label>
+      
+    <input type="text" value="<%=items.name %>" name="postname" placeholder="post name"  class="postsdetails" />
+    <br/><br/>
+    <label style="color: black;">Update Description</label>
+    <textarea cols="55"  rows="8" name="description" placeholder="description"><%=items.description %></textarea>
+    <br/><br/>
+    <input type="hidden" name="postid" value="<%=items._id%>"/>
+    <br/>
+    <input type="submit" value="update"  style="border: 9px;width:120px; background:lightgreen; padding:10px;"/>
+    </form>
+    </div>
+   <% }) %>
+   
+  
+
+</center>
+
+</body>
+</html>

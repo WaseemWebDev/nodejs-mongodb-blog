@@ -1,0 +1,30 @@
+<html>
+  <%- include("components/header.ejs")%>
+  <body>
+    <%- include("components/navbar.ejs") %>
+    <br/>
+   
+      <div  style="width: 60%; height: 600px; box-shadow:
+      0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12)  
+    ; background: white; margin: auto; padding: 40px;">
+        <img src="/uploads/<%= data.image%>" style="height: 430px; width: 960px"  alt="image"/>
+        <br /><br />
+        <h2> <%= data.name%></h2>
+        <br/>
+        <h5><%= data.description%></h5>
+        <form action="/deletepost" method="post">
+          <input type="hidden" value="<%=data._id%>" name="postid"  />
+          <input type="submit" value="Delete post" name="submit" style="background:red; float: right; color: white; border-radius: 10px; padding: 7px;" />
+        </form>
+        </div>
+  
+   
+      
+    
+  </body>
+</html>

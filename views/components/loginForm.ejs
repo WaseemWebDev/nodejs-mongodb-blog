@@ -1,0 +1,33 @@
+
+   
+       <span class="form-container">
+        <% if(errors.length > 0) { %>
+        <span class="errors">
+            <% errors.forEach(error => {  %>
+            <span class="error"><%= error.msg %></span>
+            <% }) %>
+        </span>
+        <% } %>
+    </span>
+    <% if(locals.message.success) { %>
+        <span class="alert-success"><%= message.success %></span>
+        <% } %>
+     
+    <form class="accountForms" action="/loginuser" method="POST">
+        <div class="group">
+            <h3>User login</h3>
+        </div>
+        <div class="group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="control" placeholder="Email" >
+        </div>
+        <div class="group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="control" id="password" placeholder="Password"
+                >
+        </div>
+        <div class="group">
+            <input type="submit" class="btn btn-sweet" value="Login">
+        </div>
+    </form>
+</div>
